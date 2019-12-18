@@ -1,19 +1,20 @@
 <?php
-function numsEquallySumOfNumbs($num)
+
+//Задача: Получить  все  четырехзначные  числа,  сумма  цифр  которых  равна заданному числу  n.
+
+//Функция, суммирующая цифры в числе
+function SumOfNumbs(int $numb): int
 {
-    $numsEquallySum = [];
-    for ($first = 1; $first < 10; $first++) {
-        for ($second = 0; $second < 10; $second++) {
-            for ($third = 0; $third < 10; $third++) {
-                for ($fourth = 0; $fourth < 10; $fourth++) {
-                    if ($first + $second + $third + $fourth == $num) {
-                        $numsEquallySum[] = $first.$second.$third.$fourth;
-                    }
-                }
-            }
-        }
-    }
-    return $numsEquallySum;
+    return $numb = $numb>9 ? $numb%10 + SumOfNumbs($numb/10) : $numb;
 }
-//В аргумент функции подставляйте свое значение
-print_r(numsEquallySumOfNumbs(22));
+
+$n=23;//заданное число
+
+//перебор чисел для суммирования цифр
+for ($i=1000; $i<10000;$i++) {
+    if ($n == SumOfNumbs($i)){
+        echo $i."\n";
+    }
+}
+
+
